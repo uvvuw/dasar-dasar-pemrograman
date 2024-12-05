@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+void menaraHanoi(int n, char asal, char tujuan, char perantara) {
+    if (n == 1) {
+        cout << "Pindahkan cakram 1 dari " << asal << " ke " << tujuan << endl;
+        return;
+    }
+    // Pindahkan n-1 cakram dari tiang asal ke perantara menggunakan tujuan
+    menaraHanoi(n - 1, asal, perantara, tujuan);
+    // Pindahkan cakram terakhir dari asal ke tujuan
+    cout << "Pindahkan cakram " << n << " dari " << asal << " ke " << tujuan << endl;
+    // Pindahkan n-1 cakram dari perantara ke tujuan menggunakan asal
+    menaraHanoi(n - 1, perantara, tujuan, asal);
+}
+
+int main() {
+    int n; 
+    cout << "Masukkan jumlah cakram: ";
+    cin >> n;
+
+    menaraHanoi(n, 'A', 'C', 'B'); // A = asal, C = tujuan, B = perantara
+
+    return 0;
+}
